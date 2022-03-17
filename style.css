@@ -62,3 +62,17 @@ body {
 .coin-symbol {
   text-transform: uppercase;
 }
+
+.coin-data {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 30px;
+}
+.coin-price {
+  width: 110px;
+}
+.coin-volume {
+  width: 150px;
+}

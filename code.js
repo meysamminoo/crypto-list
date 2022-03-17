@@ -31,6 +31,19 @@ function addToDom(data) {
   coinRow.appendChild(symbolElement);
 
   // * add price data
+  const coinData = document.createElement("div");
+  coinData.classList.add("coin-data");
+  // add price
+  const coinPrice = document.createElement("p");
+  coinPrice.classList.add("coin-price");
+  coinPrice.innerText = `$${data.current_price}`;
+  coinData.appendChild(coinPrice);
+  // add voluom
+  const coinVolume = document.createElement("p");
+  coinVolume.classList.add("coin-volume");
+  coinVolume.innerText = `$${data.total_volume.toLocaleString()}`;
+  coinData.appendChild(coinVolume);
 
+  coinRow.appendChild(coinData);
   coinContainer.appendChild(coinRow);
 }
