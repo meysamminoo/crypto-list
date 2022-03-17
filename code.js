@@ -43,6 +43,21 @@ function addToDom(data) {
   coinVolume.classList.add("coin-volume");
   coinVolume.innerText = `$${data.total_volume.toLocaleString()}`;
   coinData.appendChild(coinVolume);
+  // add change 24h
+  const coinPercent = document.createElement("p");
+  coinPercent.classList.add("coin-percent");
+  data.price_change_percentage_24h > 0
+    ? coinPercent.classList.add("green")
+    : coinPercent.classList.add("red");
+  coinPercent.innerText = `${data.price_change_percentage_24h.toFixed(3)}%`;
+  coinData.appendChild(coinPercent);
+
+  // add coin marketcap
+  const coinMarketCap = document.createElement("p");
+  coinMarketCap.classList.add("coin-marketcap");
+
+  coinMarketCap.innerText = `MKT C: $${data.market_cap.toLocaleString()}`;
+  coinData.appendChild(coinMarketCap);
 
   coinRow.appendChild(coinData);
   coinContainer.appendChild(coinRow);

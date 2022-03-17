@@ -76,3 +76,17 @@ body {
 .coin-volume {
   width: 150px;
 }
+.coin-percent {
+  width: 120px;
+}
+.red {
+  color: #f00606;
+}
+.green {
+  color: #00a732;
+}
+.coin-marketcap {
+  width: 200px;
+  display: flex;
+  justify-content: flex-end;
+}
