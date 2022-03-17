@@ -1,11 +1,20 @@
 // ! Selectors
 const coinContainer = document.querySelector(".coin-container");
+const searchInput = document.querySelector(".search-input");
+let search_term = "";
+let data = [];
+
+searchInput.addEventListener("input", (e) => {
+  search_term = e.target.value;
+  filterBarHandler();
+});
 
 fetch(
   "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
 )
   .then((response) => response.json())
   .then((result) => {
+    data = result;
     result.map((data) => addToDom(data));
   });
 
@@ -62,3 +71,13 @@ function addToDom(data) {
   coinRow.appendChild(coinData);
   coinContainer.appendChild(coinRow);
 }
+
+const filterBarHandler = () => {
+  const container = document.querySelector(".coin-container");
+  container.innerHTML = "";
+  data
+    .filter((item) =>
+      item.name.toLowerCase().includes(search_term.toLowerCase())
+    )
+    .forEach((item) => addToDom(item));
+};
